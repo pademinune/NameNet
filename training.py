@@ -4,7 +4,6 @@ import torch.optim as optim
 
 from name_dataset import good
 
-from read_names import read_names
 from to_vector import to_tensor
 
 from neural_net import Model
