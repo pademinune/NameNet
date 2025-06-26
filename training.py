@@ -21,7 +21,7 @@ loss_fn = nn.CrossEntropyLoss()
 #     print(features.shape)
 #     print(features[0])
 
-epochs: int = 10000
+epochs: int = 1000
 loss_interval: int = epochs // 10
 
 for epoch in range(epochs):

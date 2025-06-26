@@ -1,0 +1,16 @@
+
+size 10 vector (10 characters) -> embedding (into 16d) -> 160 (10 * 16) -> 30 relu -> 2 softmax
+
+the v2 model consists of the v2 artitecture trained with max batch size over 10,000 epochs
+
+# the epoch 0 loss data was lost
+Epoch 1000 loss: 0.00179
+Epoch 2000 loss: 0.00032
+Epoch 3000 loss: 0.00011
+Epoch 4000 loss: 0.00005
+Epoch 5000 loss: 0.00002
+Epoch 6000 loss: 0.00001
+Epoch 7000 loss: 0.00001
+Epoch 8000 loss: 0.00000
+Epoch 9000 loss: 0.00000
+TRAINING FINISHED

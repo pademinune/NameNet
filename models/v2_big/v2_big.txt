@@ -1,0 +1,3 @@
+
+the big models were trained on the extended name dataset.
+Heavy has an additional (30, 30) linear layer

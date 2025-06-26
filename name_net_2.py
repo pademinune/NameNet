@@ -9,6 +9,7 @@ class NameNet2(nn.Module):
         self.embedding: nn.Embedding = nn.Embedding(27, 16) # 0 index is reserved for padding (empty space)
         self.layer1: nn.Linear = nn.Linear(160, 30)
         self.relu: nn.ReLU = nn.ReLU()
+        # self.layerm: nn.Linear = nn.Linear(30, 30)
         self.layer2: nn.Linear = nn.Linear(30, 2)
         self.softmax: nn.Softmax = nn.Softmax(dim=-1)
     
@@ -17,11 +18,19 @@ class NameNet2(nn.Module):
         x is a size (batch_size, word_size) tensor of indexes from 0 to 25 (for each character)
         does not apply softmax, instead uses crossentropy loss
         """
+        # try:
         x = self.embedding(x)
+        # except:
+        #     print("FAILED ON EMBEDDING")
+        #     print(x)
+        #     exit()
         x = x.flatten(1)
 
         x = self.layer1(x)
         x = self.relu(x)
+
+        # x = self.layerm(x)
+        # x = self.relu(x)
 
         x = self.layer2(x)
         # x = self.softmax(x)

@@ -19,9 +19,13 @@ def index_tensor(name: str) -> torch.Tensor:
     name = name.lower()
     if (len(name) > 10):
         for i in range(1, 11):
+            if (ord(name[-i]) < ord('a') or ord(name[-i]) > ord('z')):
+                continue
             indexes[-i] = ord(name[-i]) - ord('a') + 1
     else:
         for i in range(1, len(name) + 1):
+            if (ord(name[-i]) < ord('a') or ord(name[-i]) > ord('z')):
+                continue
             indexes[-i] = ord(name[-i]) - ord('a') + 1
     return torch.tensor(indexes)
 
