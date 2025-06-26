@@ -4,8 +4,6 @@ import torch.optim as optim
 
 from dataset import dataloader
 
-from to_vector import to_tensor
-
 from neural_net import Model
     
 
@@ -34,9 +32,6 @@ for epoch in range(epochs):
         print(f"Epoch {epoch} loss: {loss.item():.5f}")
 
 torch.save(m.state_dict(), "trained.model")
+print("TRAINING FINISHED")
 
-# print([torch.argmax(t).item() for t in m(features)])
-
-print(m.forward(to_tensor("justin")))
-print(m.forward(to_tensor("raluca")))
 
