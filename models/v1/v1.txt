@@ -1,0 +1,17 @@
+
+26 -> 20 relu -> 2 softmax
+
+the v1 model was trained with a max batch size over 10,000 epochs
+
+REAL VALUES WERE NOT RECORDED. THESE ARE AN APPROXIMATION BASED ON A SIMILAR TRAINING RUN
+
+Epoch 0 loss: 0.26297
+Epoch 1000 loss: 0.09846
+Epoch 2000 loss: 0.05954
+Epoch 3000 loss: 0.03990
+Epoch 4000 loss: 0.03223
+Epoch 5000 loss: 0.02893
+Epoch 6000 loss: 0.02754
+Epoch 7000 loss: 0.02705
+Epoch 8000 loss: 0.02685
+Epoch 9000 loss: 0.02676

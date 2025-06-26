@@ -1,0 +1,15 @@
+
+26 -> 20 relu -> 2 softmax
+
+the small model was trained with a batch size of 16 over 1000 epochs
+
+Epoch 0 loss: 0.24229
+Epoch 100 loss: 0.11394
+Epoch 200 loss: 0.09536
+Epoch 300 loss: 0.08131
+Epoch 400 loss: 0.07164
+Epoch 500 loss: 0.06683
+Epoch 600 loss: 0.06072
+Epoch 700 loss: 0.05884
+Epoch 800 loss: 0.05341
+Epoch 900 loss: 0.05123

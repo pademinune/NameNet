@@ -12,6 +12,20 @@ def to_tensor(name: str) -> torch.Tensor:
 
     return tensor
 
+def index_tensor(name: str) -> torch.Tensor:
+    """Returns a right-aligned tensor of the characters"""
+    empty_char = 0
+    indexes = [empty_char for i in range(10)]
+    name = name.lower()
+    if (len(name) > 10):
+        for i in range(1, 11):
+            indexes[-i] = ord(name[-i]) - ord('a') + 1
+    else:
+        for i in range(1, len(name) + 1):
+            indexes[-i] = ord(name[-i]) - ord('a') + 1
+    return torch.tensor(indexes)
+
+
 def label_to_tensor(label: str) -> torch.Tensor:
     if label == "Male":
         return torch.tensor([1.0, 0])

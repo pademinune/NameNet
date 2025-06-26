@@ -4,14 +4,16 @@ import to_vector
 # dataset = load_dataset("aieng-lab/namexact", split="train")
 
 
+
 # print(dataset)
 
 # j = 0
 # for i in dataset:
-#     print(i)
-#     j += 1
-#     if j == 10:
-#         break
+#     if i["name"] == "Adrian":
+#         print(i)
+    # j += 1
+    # if j == 10:
+    #     break
 
 
 from torch.utils.data import DataLoader, Dataset
@@ -27,8 +29,8 @@ class NameDataset(Dataset):
         formatted = []
 
         for point in dataset:
-            name_tensor = to_vector.to_tensor(point["name"])
-            if point["gender"] == 'M':
+            name_tensor = to_vector.index_tensor(point["name"]) # type: ignore
+            if point["gender"] == 'M': # type: ignore
                 gender = "Male"
             else:
                 gender = "Female"
@@ -45,5 +47,5 @@ class NameDataset(Dataset):
         return len(self.data)
 
 nd = NameDataset()
-dataloader = DataLoader(nd, batch_size=16, shuffle=True)
+dataloader = DataLoader(nd, batch_size=2000, shuffle=True)
 
