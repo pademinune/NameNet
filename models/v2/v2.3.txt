@@ -1,0 +1,36 @@
+
+size 10 vector (10 characters) -> embedding (into 16d) -> 160 (10 * 16) -> 128 relu -> 2 softmax
+
+v2.3 was trained on the extended dataset over 1000 epochs (2000 batch size).
+
+Epoch 0 loss: 0.55700
+Epoch 100 loss: 0.11482
+Epoch 200 loss: 0.04618
+Epoch 300 loss: 0.01726
+Epoch 400 loss: 0.00555
+Epoch 500 loss: 0.00189
+Epoch 600 loss: 0.00091
+Epoch 700 loss: 0.00064
+Epoch 800 loss: 0.00042
+Epoch 900 loss: 0.00022
+TRAINING FINISHED
+
+v2.3.small was trained with the same architecture on the extended dataset over 200 epochs
+
+Epoch 0 loss: 0.57208
+Epoch 20 loss: 0.27234
+Epoch 40 loss: 0.19988
+Epoch 60 loss: 0.15604
+Epoch 80 loss: 0.12566
+Epoch 100 loss: 0.10335
+Epoch 120 loss: 0.07983
+Epoch 140 loss: 0.06711
+Epoch 160 loss: 0.05187
+Epoch 180 loss: 0.04235
+TRAINING FINISHED
+
+Notes
+
+- After discovering the issue with the extended dataset, the model performs signiificantly better during training.
+- I am worried that the model is overfitting (many epochs and low loss)
+- v2.3.small has a lower risk of overfitting, and on some examples it does better: branwen

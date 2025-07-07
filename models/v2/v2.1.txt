@@ -1,0 +1,22 @@
+
+size 10 vector (10 characters) -> embedding (into 16d) -> 160 (10 * 16) -> 30 relu -> 2 softmax
+
+v2.1 was trained with the same architecture as v2, but it is trained on the extended dataset over 1000 epochs (2000 batch size).
+
+Epoch 0 loss: 0.63698
+Epoch 100 loss: 0.31384
+Epoch 200 loss: 0.28776
+Epoch 300 loss: 0.27895
+Epoch 400 loss: 0.26877
+Epoch 500 loss: 0.26641
+Epoch 600 loss: 0.25885
+Epoch 700 loss: 0.25718
+Epoch 800 loss: 0.25558
+Epoch 900 loss: 0.25368
+TRAINING FINISHED
+
+
+Notes:
+
+- The architecture is able to fit the small dataset perfectly (0 loss), but on the large dataset, it seems to converge to about 0.25.
+    this is probably due to the lack of parameters in the model (perhaps add more layers or make each layer larger)

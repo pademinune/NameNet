@@ -1,0 +1,11 @@
+
+Datasets:
+Small (1,500 names): https://huggingface.co/datasets/aieng-lab/namexact
+Large (40,000 names): https://huggingface.co/datasets/aieng-lab/namextend
+
+- I JUST NOTICED THAT THE EXTENDED DATASET HAS WEIRD LABELS. For example, John was marked as both M and F in the 'gender' column. You need to view 'primary_gender' rather than 'gender'.
+    With this change, the models perform signiificantly better in training and loss is very low.
+
+- Even after the change, v2 and v2.1 with the 30 neuron hidden layer still aren't able to fit the large dataset well (although better than before).
+
+- v2.3 seemed to overfit the data (1000 epochs was a lot), and i trained v2.3.small on 200 epochs. It seems better at generalizing, but im not sure.

@@ -7,10 +7,10 @@ class NameNet2(nn.Module):
     def __init__(self) -> None:
         super().__init__()
         self.embedding: nn.Embedding = nn.Embedding(27, 16) # 0 index is reserved for padding (empty space)
-        self.layer1: nn.Linear = nn.Linear(160, 30)
+        self.layer1: nn.Linear = nn.Linear(160, 128)
         self.relu: nn.ReLU = nn.ReLU()
         # self.layerm: nn.Linear = nn.Linear(30, 30)
-        self.layer2: nn.Linear = nn.Linear(30, 2)
+        self.layer2: nn.Linear = nn.Linear(128, 2)
         self.softmax: nn.Softmax = nn.Softmax(dim=-1)
     
     def forward(self, x: torch.Tensor) -> torch.Tensor:

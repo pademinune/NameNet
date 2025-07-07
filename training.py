@@ -4,8 +4,8 @@ import torch.optim as optim
 
 from dataset import dataloader
 
-from neural_net import Model
-from name_net_2 import NameNet2
+from architectures.v1 import Model
+from architectures.v2 import NameNet2
 
 m: NameNet2 = NameNet2()
 # for features, labels in dataloader:
@@ -21,7 +21,7 @@ loss_fn = nn.CrossEntropyLoss()
 #     print(features.shape)
 #     print(features[0])
 
-epochs: int = 1000
+epochs: int = 200
 loss_interval: int = epochs // 10
 
 for epoch in range(epochs):

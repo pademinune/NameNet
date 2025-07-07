@@ -2,14 +2,14 @@
 import torch
 import to_vector
 
-from neural_net import Model
-from name_net_2 import NameNet2
+from architectures.v1 import Model
+from architectures.v2 import NameNet2
 
 model = NameNet2()
 
 version = "v2"
 
-model.load_state_dict(torch.load(f"models/{version}/{version}.model"))
+model.load_state_dict(torch.load(f"models/{version}/{version}.3.small.model"))
 # model.load_state_dict(torch.load("trained.model"))
 model.eval()
 

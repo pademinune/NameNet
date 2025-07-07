@@ -1,47 +1,56 @@
 from datasets import load_dataset
 import to_vector
-# https://huggingface.co/datasets/aieng-lab/namexact/viewer/default/train
-# dataset = load_dataset("aieng-lab/namexact", split="train")
+# https://huggingface.co/datasets/aieng-lab/namexact
+# https://huggingface.co/datasets/aieng-lab/namextend
 
 import torch
 
-# print(dataset)
-
-# j = 0
-# for i in dataset:
-#     if i["name"] == "Adrian":
-#         print(i)
-    # j += 1
-    # if j == 10:
-    #     break
 
 
 from torch.utils.data import DataLoader, Dataset
 
-
-# formatting the dataset
 
 
 
 class NameDataset(Dataset):
     def __init__(self, split="train"):
         # dataset = load_dataset("aieng-lab/namexact", split=split)
-        dataset = load_dataset("aieng-lab/namextend", split=split)
-        formatted = []
 
-        for point in dataset:
-            name_tensor = to_vector.index_tensor(point["name"]) # type: ignore
-            if point["gender"] == 'M': # type: ignore
-                # gender = "Male"
-                label = torch.tensor(0)
-            else:
-                # gender = "Female"
-                label = torch.tensor(1)
-            # label = to_vector.label_to_tensor(gender)
+        if split == "test":
+            dataset = load_dataset("aieng-lab/namexact", split=split)
+            formatted = []
 
-            formatted.append((name_tensor, label))
+            for point in dataset:
+                name_tensor = to_vector.index_tensor(point["name"]) # type: ignore
+                if point["gender"] == 'M': # type: ignore
+                    # gender = "Male"
+                    label = torch.tensor(0)
+                else:
+                    # gender = "Female"
+                    label = torch.tensor(1)
+                # label = to_vector.label_to_tensor(gender)
 
-        self.data = formatted
+                formatted.append((name_tensor, label))
+
+            self.data = formatted
+        else:
+            dataset = load_dataset("aieng-lab/namextend", split=split)
+            formatted = []
+
+            for point in dataset:
+                name_tensor = to_vector.index_tensor(point["name"]) # type: ignore
+                # if using large dataset, use primary_gender. Otherwise use 'gender'
+                if point["primary_gender"] == 'M': # type: ignore
+                    # gender = "Male"
+                    label = torch.tensor(0)
+                else:
+                    # gender = "Female"
+                    label = torch.tensor(1)
+                # label = to_vector.label_to_tensor(gender)
+
+                formatted.append((name_tensor, label))
+
+            self.data = formatted
     
     def __getitem__(self, index):
         return self.data[index]
