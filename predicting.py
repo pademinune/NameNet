@@ -10,7 +10,7 @@ import architectures.v2 as v2
 
 
 
-model = v2.NameNet2()
+model = v2.Model()
 
 version = "v2"
 
@@ -24,7 +24,8 @@ model.eval()
 
 while True:
     inp: str = input("Enter a name: ")
-    # k = to_vector.index_tensor(inp)
+    # k = r1.to_tensor(inp)
+    # print(k)
     out: torch.Tensor = model.predict(v2.to_tensor(inp).unsqueeze(0))
     out = out.squeeze()
     # out: torch.Tensor = model(r1.to_tensor(inp))

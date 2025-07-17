@@ -16,4 +16,3 @@ TRAINING FINISHED
 Notes:
 - The loss seems to converge above 0
     - this means the rnn may not have enough parameters
-    

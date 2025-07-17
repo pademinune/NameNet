@@ -4,11 +4,11 @@ import torch.optim as optim
 
 from dataset import dataloader
 
-from architectures.v1 import Model
-from architectures.v2 import NameNet2
-from architectures.r1 import RecurrentNet
+import architectures.v1 as v1
+import architectures.v2 as v2
+import architectures.r1 as r1
 
-m: RecurrentNet = RecurrentNet()
+m: r1.Model = r1.Model()
 # for features, labels in dataloader:
 #     print(labels)
 
@@ -22,7 +22,7 @@ loss_fn = nn.CrossEntropyLoss()
 #     print(features.shape)
 #     print(features[0])
 
-epochs: int = 40
+epochs: int = 200
 loss_interval: int = max(1, epochs // 10)
 
 for epoch in range(epochs):
@@ -30,9 +30,8 @@ for epoch in range(epochs):
     num_batches: int = 0
 
     for features, labels in dataloader:
-
         out: torch.Tensor = m(features)
-        loss: torch.Tensor = loss_fn(out, labels.squeeze())
+        loss: torch.Tensor = loss_fn(out, labels)
 
         epoch_loss += loss.item()
         num_batches += 1

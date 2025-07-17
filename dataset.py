@@ -1,5 +1,5 @@
 from datasets import load_dataset
-import to_vector
+
 # https://huggingface.co/datasets/aieng-lab/namexact
 # https://huggingface.co/datasets/aieng-lab/namextend
 
@@ -51,6 +51,7 @@ class NameDataset(Dataset):
                     label = torch.tensor(1)
                 # label = to_vector.label_to_tensor(gender)
 
+                name_tensor = name_tensor.int()
                 formatted.append((name_tensor, label))
 
             self.data = formatted
@@ -62,5 +63,5 @@ class NameDataset(Dataset):
         return len(self.data)
 
 nd = NameDataset()
-dataloader = DataLoader(nd, batch_size=1, shuffle=True)
+dataloader = DataLoader(nd, batch_size=2000, shuffle=True)
 

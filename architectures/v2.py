@@ -2,7 +2,7 @@
 import torch
 import torch.nn as nn
 
-class NameNet2(nn.Module):
+class Model(nn.Module):
     
     def __init__(self) -> None:
         super().__init__()
@@ -60,7 +60,7 @@ def to_tensor(name: str) -> torch.Tensor:
     return torch.tensor(indexes)
 
 if __name__ == "__main__":
-    n = NameNet2()
+    n = Model()
     a = torch.tensor([[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]])
 
     print(n.embedding(a))
