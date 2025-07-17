@@ -1,4 +1,4 @@
-*NameNet*
+#NameNet
 
 
 Datasets:
