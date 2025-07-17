@@ -1,15 +1,17 @@
 # NameNet
 
 NameNet is a project I've been working on to experiment with various different machine learning models and architectures. Every model aims to classify any name as Male or Female.
-You can view model specific notes within the model folder named as: {model_name}.txt
+You can view model specific notes within the model folder named as: "{model_name}.txt".
 
 2 Datasets have been used so far:
+
 Small (1,500 names): https://huggingface.co/datasets/aieng-lab/namexact
+
 Large (40,000 names): https://huggingface.co/datasets/aieng-lab/namextend
 
 ## Key Breakthroughs
 - I JUST NOTICED THAT THE EXTENDED DATASET HAS WEIRD LABELS. For example, John was marked as both M and F in the 'gender' column. You need to view 'primary_gender' rather than 'gender'.
-    With this change, the models perform signiificantly better in training and loss is very low.
+    - With this change, the models perform signiificantly better in training and loss is very low.
 
 - Even after the change, v2 and v2.1 with the 30 neuron hidden layer still aren't able to fit the large dataset well (although better than before).
 
