@@ -1,3 +1,5 @@
+*NameNet*
+
 
 Datasets:
 Small (1,500 names): https://huggingface.co/datasets/aieng-lab/namexact
