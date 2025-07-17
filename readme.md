@@ -4,7 +4,7 @@ NameNet is a project I've been working on to experiment with various different m
 You can view model specific notes within the model folder named as: {model_name}.txt
 
 2 Datasets have been used so far:
-Small (1,500 names): https://huggingface.co/datasets/aieng-lab/namexact \n
+Small (1,500 names): https://huggingface.co/datasets/aieng-lab/namexact
 Large (40,000 names): https://huggingface.co/datasets/aieng-lab/namextend
 
 ## Key Breakthroughs
