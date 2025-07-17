@@ -9,3 +9,12 @@ Large (40,000 names): https://huggingface.co/datasets/aieng-lab/namextend
 - Even after the change, v2 and v2.1 with the 30 neuron hidden layer still aren't able to fit the large dataset well (although better than before).
 
 - v2.3 seemed to overfit the data (1000 epochs was a lot), and i trained v2.3.small on 200 epochs. It seems better at generalizing, but im not sure.
+
+
+Takeaways:
+- the "characters in a bag" (v1) architecture does not preserve character order and thus is limited.
+- The fixed length approach (v2) that takes the last 10 characters learns the importance of specific character locations
+    - the model trained on the large dataset performs better, but not significantly (not 30x better)
+    - v2 performs better than v1 on names like: (mira, amir), (omar, roma), (alan, lana)
+- The first RNN (r1) architecture, despite being trained for 5 epochs on batch size of 1 and with ~0.3 loss, generalized suprisingly well
+    - it got the anagrams correct, as well as omar. It detected tokyo as male

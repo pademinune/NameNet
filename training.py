@@ -6,8 +6,9 @@ from dataset import dataloader
 
 from architectures.v1 import Model
 from architectures.v2 import NameNet2
+from architectures.r1 import RecurrentNet
 
-m: NameNet2 = NameNet2()
+m: RecurrentNet = RecurrentNet()
 # for features, labels in dataloader:
 #     print(labels)
 
@@ -21,17 +22,18 @@ loss_fn = nn.CrossEntropyLoss()
 #     print(features.shape)
 #     print(features[0])
 
-epochs: int = 200
-loss_interval: int = epochs // 10
+epochs: int = 40
+loss_interval: int = max(1, epochs // 10)
 
 for epoch in range(epochs):
     epoch_loss: float = 0
     num_batches: int = 0
 
     for features, labels in dataloader:
-        out: torch.Tensor = m(features)
 
-        loss: torch.Tensor = loss_fn(out, labels)
+        out: torch.Tensor = m(features)
+        loss: torch.Tensor = loss_fn(out, labels.squeeze())
+
         epoch_loss += loss.item()
         num_batches += 1
 

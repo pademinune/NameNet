@@ -41,6 +41,24 @@ class NameNet2(nn.Module):
         """Exact same as forward but applies softmax at the end - use for testing the model"""
         return self.softmax(self.forward(x))
 
+
+def to_tensor(name: str) -> torch.Tensor:
+    """Returns a right-aligned tensor of the characters"""
+    empty_char = 0
+    indexes = [empty_char for i in range(10)]
+    name = name.lower()
+    if (len(name) > 10):
+        for i in range(1, 11):
+            if (ord(name[-i]) < ord('a') or ord(name[-i]) > ord('z')):
+                continue
+            indexes[-i] = ord(name[-i]) - ord('a') + 1
+    else:
+        for i in range(1, len(name) + 1):
+            if (ord(name[-i]) < ord('a') or ord(name[-i]) > ord('z')):
+                continue
+            indexes[-i] = ord(name[-i]) - ord('a') + 1
+    return torch.tensor(indexes)
+
 if __name__ == "__main__":
     n = NameNet2()
     a = torch.tensor([[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]])

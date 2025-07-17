@@ -1,0 +1,15 @@
+
+r1 is a recurrent NN that applies an embedding layer of 27 characters (including blank space) and turns them into a 16d embedding
+it then applies an RNN (with 20d hidden size) and finally applies a linear layer to get 2 logits
+batch size of 1
+
+Epoch 0 loss: 0.40761
+Epoch 1 loss: 0.37359
+Epoch 2 loss: 0.36169
+Epoch 3 loss: 0.35413
+Epoch 4 loss: 0.35016
+TRAINING FINISHED
+
+Notes:
+- despite only training a few epochs and still having high loss, it still generalizes suprisingly well
+    - it still gets some names like "bradley" wrong

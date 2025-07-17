@@ -30,3 +30,16 @@ class Model(nn.Module):
     
     def __str__(self) -> str:
         return f"26 -> 16 -> ReLu -> 2 -> Softmax"
+
+
+def to_tensor(name: str) -> torch.Tensor:
+    tensor: torch.Tensor = torch.zeros(26)
+
+    for char in name:
+        char = char.lower()
+        index: int = ord(char) - ord('a')
+
+        tensor[index] += 1
+
+    return tensor
+

@@ -5,6 +5,9 @@ import to_vector
 
 import torch
 
+import architectures.v1 as v1
+import architectures.v2 as v2
+import architectures.r1 as r1
 
 
 from torch.utils.data import DataLoader, Dataset
@@ -21,7 +24,7 @@ class NameDataset(Dataset):
             formatted = []
 
             for point in dataset:
-                name_tensor = to_vector.index_tensor(point["name"]) # type: ignore
+                name_tensor = r1.to_tensor(point["name"]) # type: ignore
                 if point["gender"] == 'M': # type: ignore
                     # gender = "Male"
                     label = torch.tensor(0)
@@ -38,7 +41,7 @@ class NameDataset(Dataset):
             formatted = []
 
             for point in dataset:
-                name_tensor = to_vector.index_tensor(point["name"]) # type: ignore
+                name_tensor = r1.to_tensor(point["name"]) # type: ignore
                 # if using large dataset, use primary_gender. Otherwise use 'gender'
                 if point["primary_gender"] == 'M': # type: ignore
                     # gender = "Male"
@@ -59,5 +62,5 @@ class NameDataset(Dataset):
         return len(self.data)
 
 nd = NameDataset()
-dataloader = DataLoader(nd, batch_size=2000, shuffle=True)
+dataloader = DataLoader(nd, batch_size=1, shuffle=True)
 
