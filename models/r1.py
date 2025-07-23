@@ -22,12 +22,12 @@ class Model(nn.Module):
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """
         x is a list of letter indexes from start to end.
-        size (batches, 10)
+        size (batch_size, 10)
         """
-        # x = x.int()
 
-        x = self.embedding(x) # shape (batches, 10, 16)
+        x = self.embedding(x) # shape (batch_size, 10, 16)
         output, h_n = self.rnn(x)
+        # print(h_n.shape) # (1, batch_size, 128)
         # print(output) # prints all the hidden outputs
         h_n = h_n.squeeze(0)
         # print(h_n) # prints only the last hidden output
