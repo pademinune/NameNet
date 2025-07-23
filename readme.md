@@ -27,4 +27,4 @@ Large (40,000 names): https://huggingface.co/datasets/aieng-lab/namextend
 - The first RNN (r1.0) architecture, despite being trained for 5 epochs on batch size of 1 and with ~0.3 loss, generalized suprisingly well
     - it got the anagrams correct, as well as omar. It detected tokyo as male
         - probably gap in extended dataset
-- v3 is like a deeper version of v2 with less parameters, but it does not do well in testing
+- v3 is a deeper version of v2 (more layers) with half the number of parameters, but it does not do well in testing
