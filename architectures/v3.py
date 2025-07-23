@@ -3,14 +3,14 @@ import torch
 import torch.nn as nn
 
 class Model(nn.Module):
-    """~ 21,298 parameters"""
+    """~12,882 parameters"""
     def __init__(self) -> None:
         super().__init__()
         self.embedding: nn.Embedding = nn.Embedding(27, 16) # 0 index is reserved for padding (empty space)
-        self.layer1: nn.Linear = nn.Linear(160, 128)
+        self.layer1: nn.Linear = nn.Linear(160, 64)
         self.relu: nn.ReLU = nn.ReLU()
-        # self.layerm: nn.Linear = nn.Linear(30, 30)
-        self.layer2: nn.Linear = nn.Linear(128, 2)
+        self.layer2: nn.Linear = nn.Linear(64, 32)
+        self.layer3: nn.Linear = nn.Linear(32, 2)
         self.softmax: nn.Softmax = nn.Softmax(dim=-1)
     
     def forward(self, x: torch.Tensor) -> torch.Tensor:
@@ -27,6 +27,9 @@ class Model(nn.Module):
         x = self.relu(x)
 
         x = self.layer2(x)
+        x = self.relu(x)
+
+        x = self.layer3(x)
 
         return x
     

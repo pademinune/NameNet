@@ -1,7 +1,7 @@
 
 r1.2 is an RNN with a hidden layer size of 128 (it was 20 in r1.1). It was also trained with a batch size of 2000
 
-r1.2.1 was trained over 100 epochs
+r1.2.0 was trained over 100 epochs
 
 Epoch 0 loss: 0.60956
 Epoch 10 loss: 0.38692
@@ -15,7 +15,7 @@ Epoch 80 loss: 0.15536
 Epoch 90 loss: 0.13631
 TRAINING FINISHED
 
-r1.2.2 was trained over 200 epochs
+r1.2.1 was trained over 200 epochs
 
 Epoch 0 loss: 0.61133
 Epoch 20 loss: 0.34216
@@ -32,4 +32,6 @@ TRAINING FINISHED
 Notes:
 - The increased hidden layer size means the model can now fit the training data
 - maybe its overfitting?
-    - tokyo, helsinki, sparkey, brandy (although v2.3.small also gets this wrong)
+- tokyo, helsinki, sparkey, brandy (although v2.3.small also gets this wrong)
+- branwen
+- works on adam though

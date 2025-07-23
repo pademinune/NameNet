@@ -1,11 +1,12 @@
 
 import torch
 import torch.nn as nn
-from torch.nn.utils.rnn import pack_padded_sequence, pad_sequence
+# from torch.nn.utils.rnn import pack_padded_sequence, pad_sequence
 
 
 
 class Model(nn.Module):
+    """~19,378 parameters since each hidden to hidden and input to hidden have their own bias"""
     def __init__(self) -> None:
         super().__init__()
         self.embedding: nn.Embedding = nn.Embedding(27, 16, padding_idx=0)
@@ -30,21 +31,26 @@ class Model(nn.Module):
         return final
     
     def predict(self, x: torch.Tensor) -> torch.Tensor:
-        # x = x.squeeze()
         # x is a list of letter indexes from start to end
-        x = self.embedding(x) # shape word_length, 16
-        # print(x)
-        output, h_n = self.rnn(x)
-        # print(output) # prints all the hidden outputs
-        h_n = h_n.squeeze()
-        # print(h_n) # prints only the last hidden output
         
-        final = self.fc(h_n)
-        return torch.softmax(final, dim=-1)
-        # return final
+        if x.dim() == 1:
+            x = x.unsqueeze(0)
+
+        out = self.forward(x)
+
+        # out = out.squeeze()
+
+        return torch.softmax(out, dim=-1)
+    
+    def predict_name(self, name: str) -> tuple[float, float]:
+        inp: torch.Tensor = to_tensor(name)
+        out: torch.Tensor = self.predict(inp)
+        out = out.squeeze(dim=0)
+        return (out[0].item(), out[1].item())
 
 
 def to_tensor(name: str) -> torch.Tensor:
+    """returns a size (10) tensor containing indexes of first 10 characters"""
     name = name.lower()
     lst: list[int] = []
     for c in name:
@@ -71,10 +77,14 @@ if __name__ == "__main__":
     n2 = to_tensor("simon")
     n3 = to_tensor("ursulakia")
     # print(n1)
-    print(m(torch.stack([n1, n2, n3])))
-    k = n1.unsqueeze(0)
-    print(k)
-    print(m(k))
-    print(m.predict(n1))
+    # print(m(torch.stack([n1, n2, n3])))
+    # k = n1.unsqueeze(0)
+    # print(k)
+    # print(m(k))
+    # print(m.predict(n1))
+
+    print(m.forward(n1.unsqueeze(0)))
+    print(m.predict_name("justin"))
+    
 
 

@@ -34,4 +34,4 @@ Notes
 - After discovering the issue with the extended dataset, the model performs signiificantly better during training.
 - I am worried that the model is overfitting (many epochs and low loss)
 - v2.3.small has a lower risk of overfitting, and on some examples it does better: branwen (but probably just due to training randomness)
-- v2.3.small does not fit "omar"
+- v2.3.small does not fit "omar" or "adam"

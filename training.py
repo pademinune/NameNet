@@ -6,11 +6,13 @@ from dataset import dataloader
 
 import architectures.v1 as v1
 import architectures.v2 as v2
+import architectures.v3 as v3
+
 import architectures.r1 as r1
 
 import time
 
-m: r1.Model = r1.Model()
+m: v3.Model = v3.Model()
 # for features, labels in dataloader:
 #     print(labels)
 
@@ -24,7 +26,7 @@ loss_fn = nn.CrossEntropyLoss()
 #     print(features.shape)
 #     print(features[0])
 
-epochs: int = 10
+epochs: int = 200
 loss_interval: int = max(1, epochs // 10)
 
 print(f"Training started on {epochs} epochs.")

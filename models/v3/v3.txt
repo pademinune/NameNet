@@ -1,0 +1,17 @@
+
+v3.0 is 16d embedding -> 160 linear relu -> 64 linear relu -> 32 linear relu -> 2 linear
+
+12,882 parameters
+
+Training started on 200 epochs.
+Epoch 0 loss: 0.59184                   0.171s
+Epoch 20 loss: 0.27841                  0.131s
+Epoch 40 loss: 0.21833                  0.144s
+Epoch 60 loss: 0.18025                  0.142s
+Epoch 80 loss: 0.15552                  0.143s
+Epoch 100 loss: 0.12674                 0.138s
+Epoch 120 loss: 0.11263                 0.125s
+Epoch 140 loss: 0.09557                 0.126s
+Epoch 160 loss: 0.08394                 0.119s
+Epoch 180 loss: 0.07600                 0.143s
+TRAINING FINISHED

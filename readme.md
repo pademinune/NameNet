@@ -16,11 +16,15 @@ Large (40,000 names): https://huggingface.co/datasets/aieng-lab/namextend
 
 - v2.3 seemed to overfit the data (1000 epochs was a lot), and i trained v2.3.small on 200 epochs. It seems better at generalizing, but im not sure.
 
+- At this point, v2 and r1 both fit the training data, but r1 seems to do better (adam, omar) despite having 10% fewer parameters. They both do get stuck on the same names outside of dataset.
+    - I'm starting to think that I need a bigger dataset to do better on those names
 
 ## Takeaways
 - the "characters in a bag" (v1) architecture does not preserve character order and thus is limited.
 - The fixed length approach (v2) that takes the last 10 characters learns the importance of specific character locations
     - the model trained on the large dataset performs better, but not significantly (not 30x better)
     - v2 performs better than v1 on names like: (mira, amir), (omar, roma), (alan, lana)
-- The first RNN (r1) architecture, despite being trained for 5 epochs on batch size of 1 and with ~0.3 loss, generalized suprisingly well
+- The first RNN (r1.0) architecture, despite being trained for 5 epochs on batch size of 1 and with ~0.3 loss, generalized suprisingly well
     - it got the anagrams correct, as well as omar. It detected tokyo as male
+        - probably gap in extended dataset
+- v3 is like a deeper version of v2 with less parameters, but it does not do well in testing

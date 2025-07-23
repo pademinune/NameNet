@@ -1,33 +1,26 @@
 
 import torch
-import to_vector
+
 
 import architectures.r1 as r1
 
-
 import architectures.v1 as v1
 import architectures.v2 as v2
+import architectures.v3 as v3
 
 
+model = v3.Model()
 
-model = v2.Model()
-
-version = "v2"
+version = "v3"
 
 # model.load_state_dict(torch.load(f"models/{version}/{version}.3.small.model"))
-model.load_state_dict(torch.load(f"models/{version}/{version}.3.small.model"))
-# model.load_state_dict(torch.load("trained.model"))
-model.eval()
+model.load_state_dict(torch.load(f"models/{version}/{version}.0.model"))
 
-# print(model(to_tensor("archie")))
+
+model.eval()
 
 
 while True:
     inp: str = input("Enter a name: ")
-    # k = r1.to_tensor(inp)
-    # print(k)
-    out: torch.Tensor = model.predict(v2.to_tensor(inp).unsqueeze(0))
-    out = out.squeeze()
-    # out: torch.Tensor = model(r1.to_tensor(inp))
-    # out = torch.softmax(out, dim=-1)
-    print(f"Male: {out[0].item():.3f} | Female: {out[1].item():.3f}")
+    out = model.predict_name(inp)
+    print(f"Male: {out[0]:.3f} | Female: {out[1]:.3f}")

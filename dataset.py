@@ -41,7 +41,7 @@ class NameDataset(Dataset):
             formatted = []
 
             for point in dataset:
-                name_tensor = r1.to_tensor(point["name"]) # type: ignore
+                name_tensor = v2.to_tensor(point["name"]) # type: ignore
                 # if using large dataset, use primary_gender. Otherwise use 'gender'
                 if point["primary_gender"] == 'M': # type: ignore
                     # gender = "Male"
