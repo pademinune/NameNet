@@ -3,14 +3,20 @@ import torch
 import torch.nn as nn
 
 class Model(nn.Module):
-    """~12,882 parameters"""
+    """
+    v2 model ~ 21,298 parameters \n
+    A DNN with embeddings and 2 layers: 160 -> 128 -> 2
+    """
+
+    name: str = "v2"
+
     def __init__(self) -> None:
         super().__init__()
         self.embedding: nn.Embedding = nn.Embedding(27, 16) # 0 index is reserved for padding (empty space)
-        self.layer1: nn.Linear = nn.Linear(160, 64)
+        self.layer1: nn.Linear = nn.Linear(160, 128)
         self.relu: nn.ReLU = nn.ReLU()
-        self.layer2: nn.Linear = nn.Linear(64, 32)
-        self.layer3: nn.Linear = nn.Linear(32, 2)
+        # self.layerm: nn.Linear = nn.Linear(30, 30)
+        self.layer2: nn.Linear = nn.Linear(128, 2)
         self.softmax: nn.Softmax = nn.Softmax(dim=-1)
     
     def forward(self, x: torch.Tensor) -> torch.Tensor:
@@ -27,9 +33,6 @@ class Model(nn.Module):
         x = self.relu(x)
 
         x = self.layer2(x)
-        x = self.relu(x)
-
-        x = self.layer3(x)
 
         return x
     
@@ -48,6 +51,9 @@ class Model(nn.Module):
         
         out = out.squeeze(dim=0)
         return (out[0].item(), out[1].item())
+    
+    # def name(self) -> str:
+    #     return "v2"
 
 
 def to_tensor(name: str) -> torch.Tensor:

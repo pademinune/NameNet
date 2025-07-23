@@ -4,6 +4,13 @@ import torch.nn as nn
 from to_vector import to_tensor
 
 class Model(nn.Module):
+    """
+    v1 model ~ 582 parameters \n
+    uses 'bag of characters' \n
+    """
+
+    name: str = "v1"
+
     def __init__(self):
         super().__init__()
         self.layer1: nn.Linear = nn.Linear(26, 20)
@@ -27,6 +34,9 @@ class Model(nn.Module):
             return "Male"
         else:
             return "Female"
+        
+    # def name(self) -> str:
+    #     return "v1"
     
     def __str__(self) -> str:
         return f"26 -> 16 -> ReLu -> 2 -> Softmax"

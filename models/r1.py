@@ -6,12 +6,17 @@ import torch.nn as nn
 
 
 class Model(nn.Module):
-    """~19,378 parameters since each hidden to hidden and input to hidden have their own bias"""
+    """
+    r1 model ~ 19,378 parameters\n
+    An RNN with 128 hidden dimension\n
+    """
+    name: str = "r1"
+
     def __init__(self) -> None:
         super().__init__()
         self.embedding: nn.Embedding = nn.Embedding(27, 16, padding_idx=0)
         self.rnn: nn.RNN = nn.RNN(input_size = 16, hidden_size = 128, batch_first=True)
-
+        # each hidden to hidden and input to hidden have their own bias
         self.fc = nn.Linear(128, 2)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
@@ -47,6 +52,11 @@ class Model(nn.Module):
         out: torch.Tensor = self.predict(inp)
         out = out.squeeze(dim=0)
         return (out[0].item(), out[1].item())
+    
+    # def name(self) -> str:
+    #     return "r1"
+    
+
 
 
 def to_tensor(name: str) -> torch.Tensor:

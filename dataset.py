@@ -5,9 +5,9 @@ from datasets import load_dataset
 
 import torch
 
-import architectures.v1 as v1
-import architectures.v2 as v2
-import architectures.r1 as r1
+import models.v1 as v1
+import models.v2 as v2
+import models.r1 as r1
 
 
 from torch.utils.data import DataLoader, Dataset
