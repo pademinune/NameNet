@@ -1,6 +1,6 @@
 # NameNet
 
-NameNet is a project I've been working on to experiment with various different machine learning models and architectures. Every model aims to classify any name as Male or Female.
+NameNet is a project to experiment with various different machine learning models and architectures. Every model aims to classify any name as Male or Female based on its most common usage.
 
 You can view model specific notes within the model folder named as: "{model_name}.txt".
 
