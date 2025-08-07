@@ -10,9 +10,23 @@ Large (40,000 names): https://huggingface.co/datasets/aieng-lab/namextend
 
 ## Models
 
-### V1
+### V1 (582 parameters)
+
+A DNN with 2 layers: 26 -> 20 -> 2
 
 V1 is a dense network that uses a "characters in bag" approach. It takes a name as input and encodes it into a 26-dimensional vector containing the number of occuruences of each letter. Order of letters is not preserved.
+
+### V2 (21,298 parameters)
+
+A DNN with 16d embeddings and 2 layers: 160 -> 128 -> 2
+
+### R1 (19,378 parameters)
+
+An RNN with 16d embeddings, 128d hidden layer, and 128 -> 2 final dense layer
+
+### V3 (12,882 parameters)
+
+A DNN with 16d embeddings, 3 layers and fewer parameters: 160 -> 64 -> 32 -> 2
 
 ## Key Breakthroughs
 - I JUST NOTICED THAT THE EXTENDED DATASET HAS WEIRD LABELS. For example, John was marked as both M and F in the 'gender' column. You need to view 'primary_gender' rather than 'gender'.
