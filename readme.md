@@ -28,3 +28,4 @@ Large (40,000 names): https://huggingface.co/datasets/aieng-lab/namextend
     - it got the anagrams correct, as well as omar. It detected tokyo as male
         - probably gap in extended dataset
 - v3 is a deeper version of v2 (more layers) with half the number of parameters, but it does not do well in testing
+- The RNN architecture seemed to generalize better than any of the dense networks even with less learnable parameters.
