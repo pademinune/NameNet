@@ -8,6 +8,12 @@ You can view model specific notes within the model folder named as: "{model_name
 Small (1,500 names): https://huggingface.co/datasets/aieng-lab/namexact  
 Large (40,000 names): https://huggingface.co/datasets/aieng-lab/namextend
 
+## Models
+
+### V1
+
+V1 is a dense network that uses a "characters in bag" approach. It takes a name as input and encodes it into a 26-dimensional vector containing the number of occuruences of each letter. Order of letters is not preserved.
+
 ## Key Breakthroughs
 - I JUST NOTICED THAT THE EXTENDED DATASET HAS WEIRD LABELS. For example, John was marked as both M and F in the 'gender' column. You need to view 'primary_gender' rather than 'gender'.
     - With this change, the models perform signiificantly better in training and loss is very low.
