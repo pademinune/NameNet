@@ -1,0 +1,13 @@
+t1.1 is a transformer model that was trained on 20 epochs with batch size of 128.
+
+
+Epoch 0 loss: 0.46875                   3.569s
+Epoch 2 loss: 0.38578                   3.597s
+Epoch 4 loss: 0.36051                   3.553s
+Epoch 6 loss: 0.34704                   3.597s
+Epoch 8 loss: 0.33342                   3.577s
+Epoch 10 loss: 0.32285                  3.590s
+Epoch 12 loss: 0.31088                  3.631s
+Epoch 14 loss: 0.30275                  3.591s
+Epoch 16 loss: 0.29749                  3.664s
+Epoch 18 loss: 0.29009                  3.567s

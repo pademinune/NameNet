@@ -63,5 +63,5 @@ class NameDataset(Dataset):
         return len(self.data)
 
 nd = NameDataset()
-dataloader = DataLoader(nd, batch_size=2000, shuffle=True)
+dataloader = DataLoader(nd, batch_size=128, shuffle=True)
 

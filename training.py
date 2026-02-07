@@ -10,9 +10,11 @@ import models.v3 as v3
 
 import models.r1 as r1
 
+import models.t1 as t1
+
 import time
 
-m: v3.Model = v3.Model()
+m: t1.Model = t1.Model()
 # for features, labels in dataloader:
 #     print(labels)
 
@@ -26,7 +28,7 @@ loss_fn = nn.CrossEntropyLoss()
 #     print(features.shape)
 #     print(features[0])
 
-epochs: int = 200
+epochs: int = 20
 loss_interval: int = max(1, epochs // 10)
 
 print(f"Training started on {epochs} epochs.")
